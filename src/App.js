@@ -10,7 +10,7 @@ function App() {
   const [slecetedBot, setSelectedBot] = useState(null);
 
   useEffect(() => {
-    fetch("https://code-challenge-bots.onrender.combots")
+    fetch("https://code-challenge-bots.onrender.com/bots")
       .then((response) => response.json())
       .then((data) => setBots(data));
   }, []);
