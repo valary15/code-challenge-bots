@@ -10,7 +10,7 @@ function App() {
   const [slecetedBot, setSelectedBot] = useState(null);
 
   useEffect(() => {
-    fetch("https://battr-bot-backend-server.vercel.app/bots/bots")
+    fetch("http://localhost:8001/bots")
       .then((response) => response.json())
       .then((data) => setBots(data));
   }, []);
@@ -31,12 +31,9 @@ function App() {
   };
 
   const deleteBot = (botToDelete) => {
-    fetch(
-      `https://battr-bot-backend-server.vercel.app/bots/bots/${botToDelete.id}`,
-      {
-        method: "DELETE",
-      }
-    ).then(() => {
+    fetch(`http://localhost:8001/bots/${botToDelete.id}`, {
+      method: "DELETE",
+    }).then(() => {
       setBots(bots.filter((bot) => bot.id !== botToDelete.id));
       setArmyBots(armyBots.filter((bot) => bot.id !== botToDelete.id));
     });
@@ -56,7 +53,7 @@ function App() {
         <BotSpecs
           bot={slecetedBot}
           setSelectedBot={setSelectedBot}
-          addBotToArmy={addBotToArmy}
+          enlistBot={addBotToArmy}
         />
       ) : (
         <BotCollection
