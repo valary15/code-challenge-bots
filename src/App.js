@@ -10,7 +10,7 @@ function App() {
   const [slecetedBot, setSelectedBot] = useState(null);
 
   useEffect(() => {
-    fetch("https://json-server-vercel-phi-henna.vercel.app/bots")
+    fetch("https://code-challenge-bots.onrender.combots")
       .then((response) => response.json())
       .then((data) => setBots(data));
   }, []);
@@ -31,12 +31,9 @@ function App() {
   };
 
   const deleteBot = (botToDelete) => {
-    fetch(
-      `https://json-server-vercel-phi-henna.vercel.app/bots/${botToDelete.id}`,
-      {
-        method: "DELETE",
-      }
-    ).then(() => {
+    fetch(`https://code-challenge-bots.onrender.com/bots/${botToDelete.id}`, {
+      method: "DELETE",
+    }).then(() => {
       setBots(bots.filter((bot) => bot.id !== botToDelete.id));
       setArmyBots(armyBots.filter((bot) => bot.id !== botToDelete.id));
     });
