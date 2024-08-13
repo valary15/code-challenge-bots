@@ -53,7 +53,7 @@ function App() {
         <BotSpecs
           bot={slecetedBot}
           setSelectedBot={setSelectedBot}
-          enlistBot={addBotToArmy}
+          addBotToArmy={addBotToArmy}
         />
       ) : (
         <BotCollection
