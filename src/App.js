@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import BotCollection from "./components/BotCollection";
 import BotArmy from "./components/BotArmy";
 import SortBar from "./components/SortBar";
+import BotSpecs from "./components/BotSpecs";
 
 function App() {
   const [bots, setBots] = useState([]);
   const [armyBots, setArmyBots] = useState([]);
+  const [slecetedBot, setSelectedBot] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:8001/bots")
@@ -41,13 +43,25 @@ function App() {
     <div className="App">
       <h1>Bot Battlr</h1>
       <SortBar sortBots={sortBots} />
-      <h2>The Bot Army</h2>
       <BotArmy
         armyBots={armyBots}
         removeBot={removeBotFromArmy}
         deleteBot={deleteBot}
       />
-      <BotCollection bots={bots} addBot={addBotToArmy} />
+      <h2>Bot collection</h2>
+      {slecetedBot ? (
+        <BotSpecs
+          bot={slecetedBot}
+          setSelectedBot={setSelectedBot}
+          addBotToArmy={addBotToArmy}
+        />
+      ) : (
+        <BotCollection
+          bots={bots}
+          addBot={addBotToArmy}
+          setSelectedBot={setSelectedBot}
+        />
+      )}
     </div>
   );
 }

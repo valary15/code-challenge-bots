@@ -1,9 +1,9 @@
 import React from "react";
 
-function BotCard({ bot, handleClick, handleDelete }) {
+function BotCard({ bot, handleClick, handleDelete, setSelectedBot }) {
   return (
-    <div className="bot-card" onClick={handleClick}>
-      <img src={bot.image} alt={bot.name} />
+    <div className="bot-card" onClick={() => setSelectedBot(bot)}>
+      <img src={bot.avatar_url} alt={bot.name} />
       <h3>{bot.name}</h3>
       <p>Type: {bot.type}</p>
       <p>Health: {bot.health}</p>
@@ -15,6 +15,7 @@ function BotCard({ bot, handleClick, handleDelete }) {
             e.stopPropagation();
             handleDelete();
           }}
+          className="remove_button"
         >
           x
         </button>

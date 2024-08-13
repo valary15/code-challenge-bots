@@ -1,6 +1,6 @@
 import React from "react";
 
-function BotSpecs({ bot, goBack, enlistBot }) {
+function BotSpecs({ bot, setSelectedBot, addBotToArmy }) {
   return (
     <div className="bot-specs">
       <img src={bot.avatar_url} alt={bot.name} />
@@ -10,8 +10,15 @@ function BotSpecs({ bot, goBack, enlistBot }) {
       <p>Damage: {bot.damage}</p>
       <p>Armor: {bot.armor}</p>
       <p>{bot.catchphrase}</p>
-      <button onClick={goBack}>Back to List</button>
-      <button onClick={() => enlistBot(bot)}>Enlist Bot</button>
+      <button onClick={() => setSelectedBot(null)}>Back to List</button>
+      <button
+        onClick={() => {
+          addBotToArmy(bot);
+          setSelectedBot(null);
+        }}
+      >
+        Enlist Bot
+      </button>
     </div>
   );
 }
