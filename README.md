@@ -1,71 +1,25 @@
-# Getting Started with Create React App
+* For the proect to run you need to have a running server
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*Botarmy.js
+// Manages the bot collection
 
-## Available Scripts
+// through import from botcard it achieves the display of individual bot details
 
-In the project directory, you can run:
+// The BotArmy component is responsible for rendering the user's collection of bots in the army. It uses the BotCard component to display individual bots and provides functionality for removing and deleting bots from the army.
 
-### `npm start`
+*BotCard.js
+// The BotCard component is coded to display individual bot details such as its name, type, health, damage, and armor in a card format. The component supports interaction through click events, allowing users to select the bot or delete it from a collection. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+*BotCollection.js
+//BotsCollection component is what will render a collection of bots as a series of cards, a card is a content container. Each bot card is interactive, allowing users to add the bot to their army or select the bot for further actions, for example,The bots array is mapped over to generate a BotCard component for each bot in the array.
+key={bot.id}: The key prop is set to bot.id to help React efficiently update and render the list.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+bot={bot}: The bot prop is passed down to each BotCard component, containing the details of the bot. The component leverages the BotCard component to display each bot's details and passes down the necessary functions (addBot and setSelectedBot) to handle interactions.
 
-### `npm test`
+*BotSPecs.js
+// The BotSpecs component is designed to display detailed information about a specific bot, including its image, name, class, health, damage, armor, and catchphrase. It provides two main actions for the user: returning to the list of bots or enlisting the bot into the user's army. There is the use of setSelectedBot function to control the selected bot state and the addBotToArmy function to manage the bot army.
+The BotSpecs component is designed toThe BotSpecs component is designed to display detailed information about a specific bot, including its image, name, class,
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# code-challenge-bots
+*App.js
+THe main component of the "Bot Battlr" application. It manages the state for the list of bots, the user's bot army, and the currently selected bot. It fetches the bot data from a server, provides sorting functionality, and allows users to add bots to their army, remove them, or delete them entirely. The component also conditionally renders either a list of bots or detailed bot specifications, when a bot has been selected.
